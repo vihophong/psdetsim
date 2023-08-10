@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.12)
-project(pgenfitpythonized LANGUAGES CXX)
+project(psdetsim LANGUAGES CXX)
 
 cmake_policy(SET CMP0086 NEW)
 cmake_policy(SET CMP0078 NEW)
