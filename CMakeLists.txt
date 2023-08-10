@@ -29,10 +29,6 @@ add_definitions(${ROOT_CXX_FLAGS})
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 
-ROOT_GENERATE_DICTIONARY(G__fitF ${PROJECT_SOURCE_DIR}/include/fitF.hh LINKDEF ${PROJECT_SOURCE_DIR}/include/fitFLinkDef.hh)
-add_library(fitF SHARED ${PROJECT_SOURCE_DIR}/src/fitF.cc ${PROJECT_SOURCE_DIR}/src/fitF_auxiliary.cc ${PROJECT_SOURCE_DIR}/src/fitF_cal.cc G__fitF.cxx)
-target_link_libraries(fitF ${ROOT_LIBRARIES})
-
 ROOT_GENERATE_DICTIONARY(G__decaypath  ${PROJECT_SOURCE_DIR}/include/decaypath.hh  ${PROJECT_SOURCE_DIR}/include/common.hh LINKDEF  ${PROJECT_SOURCE_DIR}/include/decaypathLinkDef.hh)
 add_library(decaypath SHARED  ${PROJECT_SOURCE_DIR}/include/decaypath.hh  ${PROJECT_SOURCE_DIR}/src/decaypath.cc G__decaypath.cxx)
 target_link_libraries(decaypath ${ROOT_LIBRARIES})
@@ -41,7 +37,6 @@ add_executable(simulationC
     ${PROJECT_SOURCE_DIR}/src/simulation.cc ${PROJECT_SOURCE_DIR}/include/simulation.hh
     mainsimulation.cc)
 target_link_libraries(simulationC ${ROOT_LIBRARIES})
-target_link_libraries(simulationC fitF)
 target_link_libraries(simulationC decaypath)
 
 if (SWIG_FOUND)
